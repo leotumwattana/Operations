@@ -175,6 +175,7 @@ public struct WillFinishObserver: OperationWillFinishObserver {
 
     /// Conforms to `OperationWillFinishObserver`, executes the block
     public func willFinishOperation(operation: Operation, errors: [ErrorType]) {
+        print("*** 4 operation: \(operation)")
         block(operation: operation, errors: errors)
     }
 
@@ -209,6 +210,7 @@ public struct DidFinishObserver: OperationDidFinishObserver {
 
     /// Conforms to `OperationDidFinishObserver`, executes the block
     public func didFinishOperation(operation: Operation, errors: [ErrorType]) {
+        print("*** 4 operation: \(operation)")
         block(operation: operation, errors: errors)
     }
 

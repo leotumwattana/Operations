@@ -218,10 +218,12 @@ extension GroupOperation: OperationQueueDelegate {
     public func operationQueue(queue: OperationQueue, willFinishOperation operation: NSOperation, withErrors errors: [ErrorType]) {
 
         if !errors.isEmpty {
+            print("*** 7 operation: \(operation)")
             childOperation(operation, didFinishWithErrors: errors)
         }
 
         if operation !== finishingOperation {
+            print("*** 8 operation: \(operation)")
             willFinishOperation(operation, withErrors: errors)
         }
     }
@@ -229,6 +231,7 @@ extension GroupOperation: OperationQueueDelegate {
     public func operationQueue(queue: OperationQueue, didFinishOperation operation: NSOperation, withErrors errors: [ErrorType]) {
 
         if operation === finishingOperation {
+            print("*** 2 operation: \(operation)")
             finish(aggregateErrors)
             queue.suspended = true
         }

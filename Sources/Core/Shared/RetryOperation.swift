@@ -182,6 +182,7 @@ public class RetryOperation<T: NSOperation>: RepeatedOperation<T> {
             retry.info = .None
         }
         else if let op = operation as? T {
+            print("*** 9 operation: \(op)")
             retry.info = createFailureInfo(op, errors: errors)
             addNextOperation()
         }

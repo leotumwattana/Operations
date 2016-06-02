@@ -145,12 +145,14 @@ public class OperationQueue: NSOperationQueue {
         else {
             operation.addCompletionBlock { [weak self, weak operation] in
                 if let queue = self, op = operation {
+                    print("*** 1 operation: \(op)")
                     queue.delegate?.operationQueue(queue, didFinishOperation: op, withErrors: [])
                 }
             }
         }
         // swiftlint:enable function_body_length
 
+        print("*** Will add operation: \(self) \(operation)")
         delegate?.operationQueue(self, willAddOperation: operation)
 
         super.addOperation(operation)

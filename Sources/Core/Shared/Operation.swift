@@ -583,12 +583,15 @@ public extension Operation {
                 log.warning("Will finish with \(errors.count) errors.")
             }
 
+            print("WillFinishObservers \(self)")
             willFinishObservers.forEach { $0.willFinishOperation(self, errors: self._internalErrors) }
 
             state = .Finished
 
+            print("DidFinishObservers \(self)")
             didFinishObservers.forEach { $0.didFinishOperation(self, errors: self._internalErrors) }
 
+            print("*** 3 operation: \(self)")
             if errors.isEmpty {
                 log.verbose("Did finish with no errors.")
             }
